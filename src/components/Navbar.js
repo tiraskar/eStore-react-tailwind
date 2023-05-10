@@ -1,24 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getTopMenu } from '../redux/actions/topMenu'
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div className='container bg-slate-500  group '>
       <ul className='flex flex-row space-x-10 ml-20 p-2 text-xl text-white '>
-        {navLinks.map((nav, index) => (
+        {props.state.topMenu.map((item, index) => (
           <li key={index} className='hover:text-red-500'>
-            {nav.nav}
+            {/* <a href='#'>{item}</a> */}
+            <Link to='/'>{item}</Link>
           </li>
         ))}
       </ul>
     </div>
   )
 }
-export default Navbar
-
-const navLinks = [
-  { nav: 'Home' },
-  { nav: 'Men' },
-  { nav: 'Women' },
-  { nav: 'Kids' },
-  { nav: 'Best Seller' },
-]
+const mapStateToProps = (state) => {
+  return { state }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getMenu: dispatch(getTopMenu()),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

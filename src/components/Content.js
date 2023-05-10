@@ -5,7 +5,7 @@ import Product from './Product'
 const Content = () => {
   return (
     <div className='container flex flex-row p-2 '>
-      <div className='w-1/6 border-2'>
+      <div className='w-1/5 border-2'>
         <Sidebar />
       </div>
       <div className=''>
